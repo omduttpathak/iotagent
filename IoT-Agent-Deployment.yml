@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    role : iot-agent
+  name: iot-agent
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        role : iot-agent
+    spec:
+      containers:
+      - env:
+        - name: IOTA_CB_HOST
+          value: orion-service
+        - name: IOTA_CB_PORT
+          value: "1026"
+        - name: IOTA_HTTP_PORT
+          value: "7896"
+        - name: IOTA_MONGO_DB
+          value: iotagentjson
+        - name: IOTA_MONGO_HOST
+          value: mongo
+        - name: IOTA_MONGO_PORT
+          value: "27017"
+        - name: IOTA_NORTH_PORT
+          value: "4041"
+        - name: IOTA_PROVIDER_URL
+          value: http://iot-agent:4041
+        - name: IOTA_REGISTRY_TYPE
+          value: mongodb
+        - name: IOTA_MONGO_REPLICASET
+          value: rs0
+        image: csp2-centos-4:5000/fiware-iot-agent:latest 
+        name: fiware-iot-agent
+        resources:
+         limits:
+          memory: "500Mi"
+          cpu: "500m"
+         requests:
+          memory: "250Mi"
+          cpu: "250m"
+        ports:
+        - containerPort: 4041
+        - containerPort: 7896
