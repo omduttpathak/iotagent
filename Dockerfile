@@ -47,7 +47,7 @@ RUN	apt-get update && \
 	apt-get install -y git-core && \
 #	wget https://github.com/telefonicaid/iotagent-json/archive/1.9.0.zip && \
 #	unzip 1.9.0.zip && \
-	git clone http://karun.singh:karun1997@192.168.100.178/"${GITLAB_GROUP}"/"${GITLAB_REPOSITORY}".git && \
+	git clone http://fiware-csp-user:password@192.168.100.178/"${GITLAB_GROUP}"/"${GITLAB_REPOSITORY}".git && \
 #	wget --no-check-certificate -O source.zip https://github.com/"${GITHUB_ACCOUNT}"/"${GITHUB_REPOSITORY}"/archive/"${RELEASE}".zip && \
 #	unzip source.zip && \
 #	rm source.zip && \
