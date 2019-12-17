@@ -1,15 +1,15 @@
-﻿ARG NODE_VERSION=10.15.3
+ARG NODE_VERSION=10.15.3
 FROM node:${NODE_VERSION}
-ARG GITHUB_ACCOUNT=telefonicaid
-ARG GITHUB_REPOSITORY=iotagent-json
+ARG GITLAB_GROUP=csp_containerizationandautomation
+ARG GITLAB_REPOSITORY=iotagent
 ARG DOWNLOAD=1.9.0
 
 # Copying Build time arguments to environment variables so they are persisted at run time and can be 
 # inspected within a running container.
 # see: https://vsupalov.com/docker-build-time-env-values/  for a deeper explanation.
 
-ENV GITHUB_ACCOUNT=${GITHUB_ACCOUNT}
-ENV GITHUB_REPOSITORY=${GITHUB_REPOSITORY}
+ENV GITLAB_GROUP=${GITLAB_GROUP}
+ENV GITLAB_REPOSITORY=${GITLAB_REPOSITORY}
 ENV DOWNLOAD=${DOWNLOAD}
 
 MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
@@ -43,26 +43,26 @@ MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
 #	fi && \
 	# Ensure that unzip is installed, and download the sources
 RUN	apt-get update && \
-	apt-get install -y  --no-install-recommends unzip && \
+#	apt-get install -y  --no-install-recommends unzip && \
 	apt-get install -y git-core && \
-	wget https://github.com/telefonicaid/iotagent-json/archive/1.9.0.zip && \
-	unzip 1.9.0.zip && \
-#	git clone https://github.com/telefonicaid/iotagent-json.git && \
+#	wget https://github.com/telefonicaid/iotagent-json/archive/1.9.0.zip && \
+#	unzip 1.9.0.zip && \
+	git clone http://192.168.100.178/"${GITLAB_GROUP}"/"${GITLAB_REPOSITORY}" && \
 #	wget --no-check-certificate -O source.zip https://github.com/"${GITHUB_ACCOUNT}"/"${GITHUB_REPOSITORY}"/archive/"${RELEASE}".zip && \
 #	unzip source.zip && \
 #	rm source.zip && \
 #	mv "${GITHUB_REPOSITORY}-${RELEASE}" /opt/iotajson && \
-	mv iotagent-json-1.9.0 /opt/ && \
+	mv iotagent /opt/ && \
 #	rm -rf /opt/iotagent-json-1.9.0/lib/bindings/HTTPBinding.js && \
 	# Remove unzip and clean apt cache
 	apt-get clean && \
-	apt-get remove -y unzip && \
+#	apt-get remove -y unzip && \
 	apt-get -y autoremove
 
 
-WORKDIR /opt/iotagent-json-1.9.0
+WORKDIR /opt/iotagent
 
-#ADD	HTTPBinding.js /opt/iotagent-json-1.9.0/lib/bindings/
+#ADD	HTTPBinding.js /opt/iotagent/lib/bindings/
 
 RUN \
 	# Ensure that Git is installed prior to running npm install
@@ -83,6 +83,3 @@ ENV NODE_ENV=production
 
 ENTRYPOINT ["pm2-runtime", "bin/iotagent-json"]
 CMD ["-- ", "config.js"]
-
-
-
