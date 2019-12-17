@@ -2,7 +2,7 @@ stages:
 - name: Build
   steps:
   - publishImageConfig:
-      dockerfilePath: ./docker/Dockerfile
+      dockerfilePath: ./Dockerfile
       buildContext: .
       tag: iot-agent:v1
       registry: 10.0.8.61:31484
