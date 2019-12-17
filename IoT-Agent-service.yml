@@ -8,10 +8,10 @@ spec:
   type: NodePort
   ports:
     - port: 4041
-      nodePort: 30180
+      nodePort: 30189
       name: reciever
     - port: 7896
-      nodePort: 30181
+      nodePort: 30190
       name: sender
   selector:
     role: iot-agent
