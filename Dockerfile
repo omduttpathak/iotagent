@@ -1,18 +1,18 @@
 # ARG NODE_VERSION=10.15.3
 FROM node:10.15.3
-ARG GITLAB_GROUP=csp_containerizationandautomation
-ARG GITLAB_REPOSITORY=iotagent
-ARG DOWNLOAD=1.9.0
+#ARG GITLAB_GROUP=csp_containerizationandautomation
+#ARG GITLAB_REPOSITORY=iotagent
+#ARG DOWNLOAD=1.9.0
 
 # Copying Build time arguments to environment variables so they are persisted at run time and can be 
 # inspected within a running container.
 # see: https://vsupalov.com/docker-build-time-env-values/  for a deeper explanation.
 
-ENV GITLAB_GROUP=${GITLAB_GROUP}
-ENV GITLAB_REPOSITORY=${GITLAB_REPOSITORY}
-ENV DOWNLOAD=${DOWNLOAD}
+#ENV GITLAB_GROUP=${GITLAB_GROUP}
+#ENV GITLAB_REPOSITORY=${GITLAB_REPOSITORY}
+#ENV DOWNLOAD=${DOWNLOAD}
 
-MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
+#MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
 
 #
 # The following RUN command retrieves the source code from GitHub.
