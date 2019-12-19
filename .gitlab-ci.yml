@@ -1,0 +1,26 @@
+stages:
+- name: Build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: iot-agent:v1
+      pushRemote: true
+      registry: 192.168.100.176:5000
+    env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
+      PLUGIN_STORAGE_PATH: /var/lib/docker2
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./IoT-Agent-Deployment.yml
+  - applyYamlConfig:
+      path: ./IoT-Agent-service.yml
+  - applyYamlConfig:
+      path: ./Ingress.yml
+timeout: 500
+branch:
+  include:
+  - master
+notification: {}
