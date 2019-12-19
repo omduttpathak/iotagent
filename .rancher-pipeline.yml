@@ -20,5 +20,7 @@ stages:
   - applyYamlConfig:
       path: ./Ingress.yml
 timeout: 800
-branch: {}
+branch:
+  include:
+  - master
 notification: {}
