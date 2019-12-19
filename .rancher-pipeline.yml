@@ -19,6 +19,6 @@ stages:
       path: ./IoT-Agent-service.yml
   - applyYamlConfig:
       path: ./Ingress.yml
-timeout: 600
+timeout: 800
 branch: {}
 notification: {}
