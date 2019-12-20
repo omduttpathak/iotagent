@@ -33,7 +33,7 @@ spec:
           value: mongodb
         - name: IOTA_MONGO_REPLICASET
           value: rs0
-        image: 192.168.100.176:5000/iot-agent:v1
+        image: 192.168.100.176:5000/iot-agent:${CICD_EXECUTION_SEQUENCE}
         name: iot-agent
         ports:
         - containerPort: 4041
