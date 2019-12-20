@@ -1,8 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  labels:
-    role : iot-agent
   name: iot-agent
 spec:
   replicas: 3
