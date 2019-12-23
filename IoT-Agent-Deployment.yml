@@ -31,7 +31,7 @@ spec:
           value: mongodb
         - name: IOTA_MONGO_REPLICASET
           value: rs0
-        image: 192.168.100.176:5000/iot-agent:${CICD_EXECUTION_SEQUENCE}
+        image: 192.168.100.176:5000/IMG_fiware-iot-agent_v1.9.0:${CICD_EXECUTION_SEQUENCE}
         name: iot-agent
         ports:
         - containerPort: 4041
