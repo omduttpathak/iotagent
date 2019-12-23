@@ -19,7 +19,7 @@ stages:
       path: ./IoT-Agent-service.yml
   - applyYamlConfig:
       path: ./Ingress.yml
-- name: IOT-Agent_Test_Stage
+- name: test
   steps:
   - runScriptConfig:
       image: python:latest
