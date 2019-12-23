@@ -19,21 +19,15 @@ stages:
       path: ./IoT-Agent-service.yml
   - applyYamlConfig:
       path: ./Ingress.yml
-  when:
-    event: {}
-- name: IOT-Agernt_Test_Stage
+- name: IOT-Agent_Test_Stage
   steps:
   - runScriptConfig:
       image: python:latest
       shellScript: |+
         apt-get update
-  
         echo Y | apt-get install npm
-  
         npm -v
-  
         npm install -g newman
-  
         newman run http://192.168.100.178/csp_containerizationandautomation/iotagent/raw/master/IOT_agent.postman_collection.json
   when:
     branch: {}
