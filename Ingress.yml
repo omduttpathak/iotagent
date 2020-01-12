@@ -1,6 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: fiware
   name: iot-agent-src
   annotations:
     ingress.kubernetes.io/rewrite-target: /
