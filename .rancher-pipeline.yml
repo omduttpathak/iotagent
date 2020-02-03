@@ -36,6 +36,14 @@ stages:
         sleep 300
         npm install -g newman
         newman run ./IOT_agent.postman_collection.json
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
   when:
     branch: {}
     event: {}
