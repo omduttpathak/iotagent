@@ -6,7 +6,8 @@ stages:
       buildContext: .
       tag: img_fiware-iot-agent_v1.9.0:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: 192.168.100.176:5000
+      #registry: 192.168.100.176:5000
+      registry: csp2-centos-1:5000
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
